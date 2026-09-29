@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Remix Ambedkar Heritage Archive",
+  "description": "ABHILEKH: Ambedkar Bharatiya Heritage & Intellectual Knowledge Hub — Institutional Digital Heritage Archive, Manuscript Explorer & Research Platform",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

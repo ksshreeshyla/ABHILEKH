@@ -1,0 +1,439 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Newsreader", "Lora", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Cinzel", "Newsreader", Georgia, serif;
+}
+
+/* Parchment theme overrides fixed palette utilities across the existing views. */
+html.theme-light,
+html.theme-light body,
+html.theme-light #root {
+  background: #f4efe3;
+  color: #29251e;
+}
+
+.theme-light [class*="bg-[#"] {
+  background-color: #f7f2e7 !important;
+  border-color: #d2c7b2 !important;
+}
+
+.theme-light [class*="from-[#"],
+.theme-light [class*="via-[#"],
+.theme-light [class*="to-[#"] {
+  background-image: none !important;
+}
+
+.theme-light [class*="text-white"],
+.theme-light [class*="text-slate-100"],
+.theme-light [class*="text-slate-200"],
+.theme-light [class*="text-slate-300"],
+.theme-light [class*="text-slate-400"],
+.theme-light [class*="text-slate-500"],
+.theme-light [class*="text-stone-100"],
+.theme-light [class*="text-stone-200"],
+.theme-light [class*="text-gray-100"] {
+  color: #352f25 !important;
+}
+
+.theme-light [class*="text-amber-300"],
+.theme-light [class*="text-amber-400"],
+.theme-light [class*="text-amber-500"] {
+  color: #704600 !important;
+}
+
+.theme-light .bg-stone-900 {
+  background-color: #e8dfce !important;
+}
+
+.theme-light [class*="border-[#"] {
+  border-color: #d2c7b2 !important;
+}
+
+.theme-light input,
+.theme-light textarea,
+.theme-light select {
+  background-color: #fffdf7;
+  color: #29251e;
+  border-color: #b8aa91;
+}
+
+.theme-light button:focus-visible,
+.theme-light a:focus-visible,
+.theme-light input:focus-visible,
+.theme-light select:focus-visible,
+.theme-light textarea:focus-visible {
+  outline: 3px solid #7a4a00;
+  outline-offset: 2px;
+}
+
+html[data-font-scale="large"] { font-size: 18px; }
+html[data-font-scale="xl"] { font-size: 20px; }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+.high-contrast button:focus-visible,
+.high-contrast a:focus-visible,
+.high-contrast input:focus-visible,
+.high-contrast select:focus-visible,
+.high-contrast textarea:focus-visible {
+  outline: 4px solid #ffff00 !important;
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   1. HIGH-CONTRAST MODE (WCAG AAA Compliance - Pitch Black & High Visibility)
+   Guarantees 100% legibility: No words or containers ever disappear
+   ========================================================================== */
+html.high-contrast,
+body.high-contrast,
+.high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast body,
+.high-contrast main,
+.high-contrast #root,
+.high-contrast div[class*="min-h-screen"] {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Base typography overrides in high contrast */
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast h4,
+.high-contrast h5,
+.high-contrast h6 {
+  color: #ffffff !important;
+}
+
+.high-contrast p,
+.high-contrast li,
+.high-contrast label,
+.high-contrast time,
+.high-contrast blockquote {
+  color: #f4f4f5 !important;
+}
+
+/* All Tailwind text classes mapped to high visibility */
+.high-contrast .text-stone-950,
+.high-contrast .text-stone-900,
+.high-contrast .text-stone-800,
+.high-contrast .text-stone-700,
+.high-contrast .text-stone-600,
+.high-contrast .text-stone-500,
+.high-contrast .text-slate-950,
+.high-contrast .text-slate-900,
+.high-contrast .text-slate-800,
+.high-contrast .text-slate-700,
+.high-contrast .text-slate-600,
+.high-contrast .text-slate-500,
+.high-contrast .text-gray-950,
+.high-contrast .text-gray-900,
+.high-contrast .text-gray-800,
+.high-contrast .text-gray-700,
+.high-contrast .text-gray-600,
+.high-contrast .text-gray-500,
+.high-contrast .text-zinc-950,
+.high-contrast .text-zinc-900,
+.high-contrast .text-zinc-800,
+.high-contrast .text-zinc-700,
+.high-contrast .text-neutral-950,
+.high-contrast .text-neutral-900,
+.high-contrast .text-black {
+  color: #ffffff !important;
+}
+
+/* Secondary / muted text becomes crisp light silver */
+.high-contrast .text-stone-400,
+.high-contrast .text-stone-300,
+.high-contrast .text-slate-400,
+.high-contrast .text-slate-300,
+.high-contrast .text-gray-400,
+.high-contrast .text-zinc-400 {
+  color: #e4e4e7 !important;
+}
+
+/* Accent text becomes vivid bright yellow/gold */
+.high-contrast .text-amber-500,
+.high-contrast .text-amber-400,
+.high-contrast .text-amber-300,
+.high-contrast .text-yellow-500,
+.high-contrast .text-yellow-400,
+.high-contrast .text-amber-600,
+.high-contrast .text-amber-700,
+.high-contrast .text-amber-800,
+.high-contrast .text-amber-900,
+.high-contrast .text-amber-950 {
+  color: #facc15 !important;
+}
+
+.high-contrast .text-emerald-600,
+.high-contrast .text-emerald-500,
+.high-contrast .text-emerald-400,
+.high-contrast .text-emerald-700 {
+  color: #4ade80 !important;
+}
+
+.high-contrast .text-blue-600,
+.high-contrast .text-blue-500,
+.high-contrast .text-blue-400,
+.high-contrast .text-blue-700 {
+  color: #60a5fa !important;
+}
+
+/* All container backgrounds inverted to deep black */
+.high-contrast .bg-white,
+.high-contrast .bg-stone-50,
+.high-contrast .bg-stone-100,
+.high-contrast .bg-stone-200,
+.high-contrast .bg-stone-300,
+.high-contrast .bg-stone-50\/60,
+.high-contrast .bg-stone-50\/80,
+.high-contrast .bg-stone-50\/90,
+.high-contrast .bg-stone-100\/80,
+.high-contrast .bg-amber-50,
+.high-contrast .bg-amber-100,
+.high-contrast .bg-amber-50\/80,
+.high-contrast .bg-amber-50\/90,
+.high-contrast .bg-blue-50,
+.high-contrast .bg-emerald-50,
+.high-contrast .bg-stone-900,
+.high-contrast .bg-stone-950 {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+  border-color: #3f3f46 !important;
+}
+
+/* Primary Yellow High-Contrast Buttons & Active Badges
+   MUST have bold jet-black text so words are 100% visible on yellow! */
+.high-contrast .bg-amber-600,
+.high-contrast .bg-amber-500,
+.high-contrast .bg-amber-400,
+.high-contrast .bg-yellow-500,
+.high-contrast .bg-yellow-400 {
+  background-color: #facc15 !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+}
+
+.high-contrast .bg-amber-600 *,
+.high-contrast .bg-amber-500 *,
+.high-contrast .bg-amber-400 *,
+.high-contrast .bg-yellow-500 *,
+.high-contrast .bg-yellow-400 * {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* High-contrast cards and borders */
+.high-contrast .border,
+.high-contrast .border-t,
+.high-contrast .border-b,
+.high-contrast .border-l,
+.high-contrast .border-r,
+.high-contrast .border-stone-200,
+.high-contrast .border-stone-300,
+.high-contrast .border-stone-400,
+.high-contrast .border-stone-700,
+.high-contrast .border-stone-800,
+.high-contrast .border-stone-900,
+.high-contrast .divide-stone-200 > * + *,
+.high-contrast .divide-stone-300 > * + * {
+  border-color: #52525b !important;
+}
+
+/* Form inputs in high-contrast */
+.high-contrast input,
+.high-contrast textarea,
+.high-contrast select {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #facc15 !important;
+}
+
+.high-contrast input::placeholder,
+.high-contrast textarea::placeholder {
+  color: #a1a1aa !important;
+}
+
+.high-contrast select option {
+  background-color: #18181b !important;
+  color: #ffffff !important;
+}
+
+/* Manuscript Parchment simulations in high-contrast */
+.high-contrast .bg-\[\#f7f2e7\],
+.high-contrast .bg-\[\#fbf8f1\],
+.high-contrast .bg-\[\#fcfbf7\],
+.high-contrast .bg-\[\#faf8f5\] {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+  border: 2px solid #facc15 !important;
+}
+
+.high-contrast .bg-\[\#f7f2e7\] *,
+.high-contrast .bg-\[\#fbf8f1\] *,
+.high-contrast .bg-\[\#fcfbf7\] *,
+.high-contrast .bg-\[\#faf8f5\] * {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   2. DARK MODE (Deep Navy Institutional Archival Palette - Reference UI)
+   Eliminates white-on-white text: All containers adopt deep navy blue, text lights up
+   ========================================================================== */
+html.dark:not(.high-contrast),
+body.dark:not(.high-contrast),
+.dark:not(.high-contrast) {
+  background-color: #070c1a;
+  color: #f1f5f9;
+}
+
+/* Invert all light card and section backgrounds to rich deep navy blue in dark mode */
+.dark:not(.high-contrast) .bg-white,
+.dark:not(.high-contrast) .bg-stone-50,
+.dark:not(.high-contrast) .bg-stone-100,
+.dark:not(.high-contrast) .bg-stone-200,
+.dark:not(.high-contrast) .bg-stone-300,
+.dark:not(.high-contrast) .bg-stone-50\/60,
+.dark:not(.high-contrast) .bg-stone-50\/80,
+.dark:not(.high-contrast) .bg-stone-50\/90,
+.dark:not(.high-contrast) .bg-amber-50,
+.dark:not(.high-contrast) .bg-amber-100,
+.dark:not(.high-contrast) .bg-amber-50\/80,
+.dark:not(.high-contrast) .bg-amber-50\/90,
+.dark:not(.high-contrast) .bg-blue-50,
+.dark:not(.high-contrast) .bg-emerald-50,
+.dark:not(.high-contrast) .bg-\[\#faf8f5\] {
+  background-color: #0d1527 !important;
+  color: #f1f5f9 !important;
+  border-color: #1a2744 !important;
+}
+
+/* Invert all dark text classes to bright readable tones in dark mode */
+.dark:not(.high-contrast) .text-stone-950,
+.dark:not(.high-contrast) .text-stone-900,
+.dark:not(.high-contrast) .text-stone-800,
+.dark:not(.high-contrast) .text-slate-900,
+.dark:not(.high-contrast) .text-gray-900,
+.dark:not(.high-contrast) .text-zinc-900,
+.dark:not(.high-contrast) .text-black {
+  color: #f8fafc !important;
+}
+
+.dark:not(.high-contrast) .text-stone-700,
+.dark:not(.high-contrast) .text-stone-600,
+.dark:not(.high-contrast) .text-slate-700,
+.dark:not(.high-contrast) .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark:not(.high-contrast) .text-stone-500,
+.dark:not(.high-contrast) .text-stone-400,
+.dark:not(.high-contrast) .text-slate-500,
+.dark:not(.high-contrast) .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+/* Dark mode amber and gold accents */
+.dark:not(.high-contrast) .text-amber-800,
+.dark:not(.high-contrast) .text-amber-900,
+.dark:not(.high-contrast) .text-amber-700 {
+  color: #fbbf24 !important;
+}
+
+.dark:not(.high-contrast) .text-emerald-700,
+.dark:not(.high-contrast) .text-emerald-800 {
+  color: #34d399 !important;
+}
+
+.dark:not(.high-contrast) .text-blue-700,
+.dark:not(.high-contrast) .text-blue-800 {
+  color: #60a5fa !important;
+}
+
+/* Form inputs in dark mode */
+.dark:not(.high-contrast) input,
+.dark:not(.high-contrast) textarea,
+.dark:not(.high-contrast) select {
+  background-color: #090f1e !important;
+  color: #f1f5f9 !important;
+  border-color: #24355a !important;
+}
+
+.dark:not(.high-contrast) input::placeholder,
+.dark:not(.high-contrast) textarea::placeholder {
+  color: #64748b !important;
+}
+
+.dark:not(.high-contrast) select option {
+  background-color: #0d1527 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Dark mode borders and dividers */
+.dark:not(.high-contrast) .border-stone-200,
+.dark:not(.high-contrast) .border-stone-300,
+.dark:not(.high-contrast) .border-stone-400,
+.dark:not(.high-contrast) .divide-stone-200 > * + *,
+.dark:not(.high-contrast) .divide-stone-300 > * + * {
+  border-color: #1a2744 !important;
+}
+
+/* Parchment simulations in dark mode */
+.dark:not(.high-contrast) .bg-\[\#f7f2e7\],
+.dark:not(.high-contrast) .bg-\[\#fbf8f1\],
+.dark:not(.high-contrast) .bg-\[\#fcfbf7\] {
+  background-color: #0b1222 !important;
+  color: #f1f5f9 !important;
+  border-color: #1f3054 !important;
+}
+
+.dark:not(.high-contrast) .bg-\[\#f7f2e7\] *,
+.dark:not(.high-contrast) .bg-\[\#fbf8f1\] *,
+.dark:not(.high-contrast) .bg-\[\#fcfbf7\] * {
+  color: #f1f5f9 !important;
+}
+
+/* ==========================================================================
+   3. SCROLLBARS
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1efe7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c8bfad;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9d917b;
+}
+
+.dark ::-webkit-scrollbar-track,
+.high-contrast ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+.dark ::-webkit-scrollbar-thumb,
+.high-contrast ::-webkit-scrollbar-thumb {
+  background: #52525b;
+}

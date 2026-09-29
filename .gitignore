@@ -1,0 +1,17 @@
+﻿node_modules/
+dist/
+build/
+.vite/
+
+.env
+.env.*
+!.env.example
+
+input/*.pdf
+
+storage/**/*.pdf
+
+*.log
+
+.DS_Store
+Thumbs.db
