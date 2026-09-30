@@ -1102,6 +1102,14 @@ apiRouter.get('/documents/:documentId/pages/:pageNumber/rendered', async (req: R
   try {
     const pageNumber = Number.parseInt(req.params.pageNumber, 10);
     if (!Number.isInteger(pageNumber) || pageNumber < 1) return res.status(400).json({ ok: false, message: 'Invalid page number.' });
+    if (req.params.documentId === 'doc-item-baws-vol-01' && pageNumber <= 516) {
+      const sourceVersion = typeof req.query.v === 'string' && /^[a-f0-9]{64}$/i.test(req.query.v)
+        ? `&v=${encodeURIComponent(req.query.v)}`
+        : '';
+      const staticImage = `/archive-pages/doc-item-baws-vol-01/page_${String(pageNumber).padStart(4, '0')}.webp?format=webp-110dpi-q82${sourceVersion}`;
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      return res.redirect(302, staticImage);
+    }
     const asset = await DocumentService.getPageAssetBinary(req.params.documentId, pageNumber);
     if (!asset) return res.status(404).json({ ok: false, message: 'Stored page asset was not found.' });
     const sourceHash = crypto.createHash('sha256').update(asset.buffer).digest('hex');
