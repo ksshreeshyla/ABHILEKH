@@ -9,7 +9,7 @@
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
-import { apiRouter } from './src/server/api.ts';
+import { createApiApp } from './src/server/createApiApp.ts';
 import { testConnection, checkSchemaStatus, hasDbConfig } from './src/server/db.ts';
 
 dotenv.config();
@@ -45,34 +45,7 @@ const PORT = portFromArg || parseInt(process.env.PORT || '3000', 10);
 const isProd = process.env.NODE_ENV === 'production';
 
 async function startServer() {
-  const app = express();
-
-  // Support genuine archival PDF assets up to 120 MiB (120 * 1024 * 1024 bytes = 125,829,120 bytes).
-  // Base64 encoding expands binary payloads by ~33.3% (~168 MB for a 120 MiB PDF), so limit is set to 200mb.
-  app.use(express.json({ limit: '200mb' }));
-  app.use(express.urlencoded({ extended: true, limit: '200mb' }));
-
-  // Mount backend API routes
-  app.use('/api', apiRouter);
-
-  // Catch-all for undefined /api routes so they NEVER fall through to the SPA HTML fallback
-  app.all('/api/*', (req, res) => {
-    res.status(404).json({
-      ok: false,
-      error: 'Not Found',
-      message: `API endpoint not found: ${req.method} ${req.originalUrl}`
-    });
-  });
-
-  // Ensure /api error handling ALWAYS returns JSON, never HTML
-  app.use('/api', (err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-    console.error('[API Error]', err);
-    res.status(err.status || err.statusCode || 500).json({
-      ok: false,
-      error: err.name || 'InternalServerError',
-      message: err.message || 'An unexpected error occurred during API processing'
-    });
-  });
+  const app = createApiApp();
 
   // Connection startup check (server-side only, sanitized output)
   if (hasDbConfig()) {
